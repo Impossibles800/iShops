@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load bootstrap5 %}
+{% block title %}
+    Products
+{% endblock %}
+
+{% block body %}
+
+
+    <br>
+    <div class="ml:120">
+        <div class="row-md-3">
+            {% for foo in product %}
+
+                <div class="card" style="width: 18rem;">
+                    <img src="/media/{{ foo.image }}" class="card-img-top"
+                         alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ foo.title }}
+                        </h5>
+                        <p class="card-text">
+                            {{ foo.description }}
+                        </p>
+
+                        <div class="flex">
+                            Price: {{ foo.price }}
+                        </div>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+
+                            <input type="submit" class="btn btn-primary"
+                                   value="Add to cart">
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br>
+{% endblock %}
