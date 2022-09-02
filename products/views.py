@@ -28,11 +28,11 @@ def show_category(request, pkid):
 
     return render(request, 'products.html', data)
 
-#
-# def search(request):
-#     find = request.GET['find']
-#     products = Product.objects.filter(title__icontains=find)
-#     data_1 = {
-#         'products': products
-#     }
-#     return render(request, 'result.html', data_1)
+
+def search(request):
+    find = request.GET['find']
+    products = Product.objects.filter(title__icontains=find)
+    data_1 = {
+        'products': products
+    }
+    return render(request, 'result.html', data_1)

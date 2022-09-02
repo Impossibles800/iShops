@@ -1,19 +1,10 @@
 {% extends 'index.html' %}
-{% load static %}
 {% block title %}
-    Products
+iShops - Product
 {% endblock %}
 
 {% block body %}
-
-    <style>
-    .ml{
-        margin-left: 120px;
-    }
-    </style>
-
-    <br>
-    <div class="container">
+ <div class="ml:120">
         <div class="row-md-3">
             {% for foo in product %}
 
@@ -33,7 +24,6 @@
                         </div>
                         <form action="" method="POST">
                             {% csrf_token %}
-
                             <input type="submit" class="btn btn-primary"
                                    value="Add to cart">
                         </form>
@@ -42,6 +32,4 @@
             {% endfor %}
         </div>
     </div>
-
-    <br>
 {% endblock %}
