@@ -24,7 +24,7 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('', include('products.urls')),
     path('products/', include('products.urls')),
-    path('register/', include('accounts.urls')),
-    path('login/', include('accounts.urls')),
+    # include only one link for one app
+    path('accounts/', include('accounts.urls')),
     path('cart/', include('cart.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

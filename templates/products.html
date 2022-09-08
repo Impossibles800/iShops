@@ -13,8 +13,8 @@
     </style>
 
     <br>
-    <div class="container">
-        <div class="row-md-3">
+    <div class="container-fluid mt-5">
+        <div class="row mx-auto">
             {% for foo in product %}
 
                 <div class="card" style="width: 18rem;">
@@ -29,13 +29,14 @@
                         </p>
 
                         <div class="flex">
-                            Price: {{ foo.price }}
+                            Price: ₹{{ foo.price }}
                         </div>
-                        <form action="" method="POST">
-                            {% csrf_token %}
+                        <div class="flex">
+                                 <a href="{% url 'cart:cart_add' foo.id %}" class="btn btn-primary">
+                                     Add to cart
+                                 </a>
+                        </div>
 
-                            <input type="submit" class="btn btn-primary"
-                                   value="Add to cart">
                         </form>
                     </div>
                 </div>

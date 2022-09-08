@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 
+from iShops import settings
+
 
 def home(request):
     return render(request, 'products.html')
@@ -21,13 +23,13 @@ def register(request):
                 user = User.objects.create_user(username=username, email=email, password=password)
                 user.save()
                 messages.success(request, "Register successfully")
-                send_mail(
-                    'iShops-Welcome',
-                    'Thankyou for registering in iShops',
-                    'marco96wb@gmail.com',
-                    ['user.email'],
-                    fail_silently=False,
-                )
+                # send_mail(
+                #     'iShops-Welcome',
+                #     'Thankyou for registering in iShops',
+                #     'marco96wb@gmail.com',
+                #     ['user.email'],
+                #     fail_silently=False,
+                # )
                 print("Register successfully")
                 return redirect('login_user')
             else:
@@ -47,17 +49,28 @@ def login_user(request):
         password = request.POST.get('password')
 
         user = authenticate(request, username=username, password=password)
+        # user_email = user.email
+        # subject = 'iShops-Welcome'
+        # message = 'You are currently login to iShops'
+        # email_from = settings.EMAIL_HOST_USER
+        # recipient_list = [user.email, ]
 
         if user is not None:
             login(request, user)
-            send_mail(
-                'iShops-Welcome',
-                'You are currently login to iShops',
-                'marco96wb@gmail.com',
-                ['user.email'],
-                fail_silently=False,
-            )
+            # send_mail(
+            #     # 'iShops-Welcome',
+            #     # 'You are currently login to iShops',
+            #     # 'marco96wb@gmail.com',
+            #     # 'user_email',
+            #     # fail_silently=False,
+            #
+            #     subject,
+            #     message,
+            #     email_from,
+            #     recipient_list
+            # )
             print("Login successfully")
+            print(user.email)
             return redirect('products')
 
         else:
@@ -67,11 +80,11 @@ def login_user(request):
 
 def logout_user(request):
     auth.logout(request)
-    send_mail(
-        'iShops-Signing Off',
-        'You have logout from the iShops',
-        'marco96wb@gmail.com',
-        ['user.email'],
-        fail_silently=False,
-    )
+    # send_mail(
+    #     'iShops-Signing Off',
+    #     'You have logout from the iShops',
+    #     'marco96wb@gmail.com',
+    #     ['user.email'],
+    #     fail_silently=False,
+    # )
     return redirect('products')

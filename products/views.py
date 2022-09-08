@@ -1,7 +1,5 @@
-from django.shortcuts import render
-
-from products.models import Category
-from .models import Product
+from django.shortcuts import render, redirect
+from .models import Product, Category
 
 
 # Create your views here.
@@ -36,3 +34,15 @@ def search(request):
         'products': products
     }
     return render(request, 'result.html', data_1)
+
+
+def cart(request):
+    return render(request, 'cart.html')
+
+
+
+
+
+
+
+

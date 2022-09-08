@@ -4,5 +4,50 @@
 {% endblock %}
 
 {% block body %}
-    This is cart page
+    <h1>iShops Cart</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+            <th>Unit Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            {% with product = item.product %}
+                <tr>
+                    <td>
+                        <a href="{{ product.get_absolute_url }}">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="100" height="100">
+                        </a>
+                    </td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <form action="{% url 'cart:remove' product.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Remove">
+                        </form>
+                    </td>
+                    <td class="num">Rs{{ item.price }}</td>
+                    <td class="num">Rs{{ product.price|multiply:item.quantity }}</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">Rs{{ cart.total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url 'cart:clear' %}" class="btn btn-danger">Clear Cart</a>
+        <a href="{% url 'cart:checkout' %}" class="btn btn-success">Checkout</a>
+    </p>
 {% endblock %}

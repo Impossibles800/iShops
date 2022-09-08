@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
-    "django_browser_reload",
+    'django_browser_reload',
     'products',
     'accounts',
     'cart',
+
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'marco96wb@gmail.com'
 EMAIL_HOST_PASSWORD = 'uygcjlpqdtgrbbbo'
 EMAIL_USE_TLS = True
+
+CART_SESSION_ID = 'cart'
