@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap5',
     'django_browser_reload',
+    'django_email_verification',
     'products',
     'accounts',
     'cart',
+    'payment',
 
 ]
 
@@ -135,8 +137,23 @@ MEDIA_URL = '/media/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'marco96wb@gmail.com'
-EMAIL_HOST_PASSWORD = 'uygcjlpqdtgrbbbo'
+EMAIL_HOST_USER = 'august2001sp@gmail.com'
+EMAIL_HOST_PASSWORD = 'abewpvkzsxcfprhu'
 EMAIL_USE_TLS = True
 
 CART_SESSION_ID = 'cart'
+# Email Verification
+# EMAIL_ACTIVE_FIELD = 'is_active'
+# EMAIL_SERVER = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'marco96wb@gmail.com'
+# EMAIL_HOST_PASSWORD = 'uygcjlpqdtgrbbbo'
+# EMAIL_MAIL_SUBJECT = 'Verify your email'
+# EMAIL_MAIL_HTML = 'email_body.html'
+# EMAIL_MAIL_PLAIN = 'email_body.txt'
+# EMAIL_PAGE_TEMPLATE = 'confirm_email.html'
+# EMAIL_MAIL_DOMAIN = 'http://Ishops.com'
+
+# Razorpay
+RAZOR_KEY_ID = 'rzp_test_xeV4ZNwwHXSWQq'
+RAZOR_KEY_SECRET = 'tGLQzbbC4fcUcQUVkWGKG7Kn'

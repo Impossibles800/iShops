@@ -36,8 +36,7 @@ def search(request):
     return render(request, 'result.html', data_1)
 
 
-def cart(request):
-    return render(request, 'cart.html')
+
 
 
 

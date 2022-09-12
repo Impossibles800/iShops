@@ -31,13 +31,19 @@
                         <div class="flex">
                             Price: ₹{{ foo.price }}
                         </div>
-                        <div class="flex">
-                                 <a href="{% url 'cart:cart_add' foo.id %}" class="btn btn-primary">
-                                     Add to cart
-                                 </a>
-                        </div>
-
+{#                        <div class="flex">#}
+{#                                 <a href="{% url 'cart:cart_add' foo.id %}" class="btn btn-primary">#}
+{#                                     Add to cart#}
+{#                                 </a>#}
+{#                        </div>#}
+                        <form action="{% url 'cart:cart_add' foo.id %}" method="POST">
+                            {% csrf_token %}
+                            {{ cart_product_form }}
+                            <button class="btn btn-primary" type="sumbit" value="{{ foo.id }}">
+                                Add to Cart
+                            </button>
                         </form>
+
                     </div>
                 </div>
             {% endfor %}
