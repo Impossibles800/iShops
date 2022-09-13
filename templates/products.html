@@ -14,7 +14,7 @@
 
     <br>
     <div class="container-fluid mt-5">
-        <div class="row mx-auto">
+        <div class="row mx-auto" style="flex:content">
             {% for foo in product %}
 
                 <div class="card" style="width: 18rem;">
@@ -31,17 +31,11 @@
                         <div class="flex">
                             Price: ₹{{ foo.price }}
                         </div>
-{#                        <div class="flex">#}
-{#                                 <a href="{% url 'cart:cart_add' foo.id %}" class="btn btn-primary">#}
-{#                                     Add to cart#}
-{#                                 </a>#}
-{#                        </div>#}
-                        <form action="{% url 'cart:cart_add' foo.id %}" method="POST">
-                            {% csrf_token %}
-                            {{ cart_product_form }}
-                            <button class="btn btn-primary" type="sumbit" value="{{ foo.id }}">
-                                Add to Cart
-                            </button>
+
+                        <div class="flex">
+                            <a href="{% url 'buy' foo.id %}" class="btn btn-primary ml">
+                                Buy Now
+                            </a>
                         </form>
 
                     </div>

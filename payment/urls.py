@@ -5,5 +5,5 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('paymenthandler/', views.paymenthandler, name='paymenthandler'),
-    path('', views.homepage, name='homepage'),
+    path('checkout/', views.checkout, name='checkout'),
     ]

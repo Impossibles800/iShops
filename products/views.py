@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+
 from .models import Product, Category
 
 
@@ -36,12 +37,9 @@ def search(request):
     return render(request, 'result.html', data_1)
 
 
-
-
-
-
-
-
-
-
-
+def buy(request, pkid):
+    product = Product.objects.get(pk=pkid)
+    data = {
+        'product': product
+    }
+    return render(request, 'checkout.html', data)
