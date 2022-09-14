@@ -6,7 +6,6 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 
 
-
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
